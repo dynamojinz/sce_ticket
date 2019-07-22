@@ -21,7 +21,7 @@ class SceTicket(http.Controller):
             ticket = Ticket.search([('id','=',ticket_num)])
             user = request.env.user
             topped1 = Ticket.top(user,ticket)
-            if topped1
+            if topped1:
                 if topped1.ticket_id.id:
                     ticket_list.append(
                         {
