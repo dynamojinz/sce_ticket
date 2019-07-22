@@ -21,24 +21,25 @@ class SceTicket(http.Controller):
             ticket = Ticket.search([('id','=',ticket_num)])
             user = request.env.user
             topped1 = Ticket.top(user,ticket)
-            if topped1 & topped1.ticket_id.id!=False:
-                ticket_list.append(
-                    {
-                        'id': topped1.ticket_id.id,
-                        'name': topped1.ticket_id.name,
-                        'address': topped1.ticket_id.address,
-                        'phone': topped1.ticket_id.phone,
-                        'bank_name': topped1.ticket_id.bank_name,
-                        'bank_number': topped1.ticket_id.bank_number,
-                        'duty_number':topped1.ticket_id.duty_number,
-                        'topped':'on'
-                    }
-                )
+            if topped1
+                if topped1.ticket_id.id:
+                    ticket_list.append(
+                        {
+                            'id': topped1.ticket_id.id,
+                            'name': topped1.ticket_id.name,
+                            'address': topped1.ticket_id.address,
+                            'phone': topped1.ticket_id.phone,
+                            'bank_name': topped1.ticket_id.bank_name,
+                            'bank_number': topped1.ticket_id.bank_number,
+                            'duty_number':topped1.ticket_id.duty_number,
+                            'topped':'on'
+                        }
+                    )
             # print('-------------- ticket.top --------------')
         if topped1:
             topped2 = request.env['sce_ticket.top'].search([('topper', '=', user.id),('ticket_id','!=',topped1.ticket_id.id)])
             for topped in topped2:
-                if topped.ticket_id.id != False:
+                if topped.ticket_id.id:
                     ticket_list.append(
                         {
                             'id': topped.ticket_id.id,
@@ -54,7 +55,7 @@ class SceTicket(http.Controller):
         else:
             topped2 = request.env['sce_ticket.top'].search([('topper', '=', user.id)])
             for topped in topped2:
-                if topped.ticket_id.id != False:
+                if topped.ticket_id.id:
                     ticket_list.append(
                         {
                             'id':topped.ticket_id.id,
@@ -67,7 +68,6 @@ class SceTicket(http.Controller):
                             'topped': 'on'
                         }
                     )
-        # print(ticket_list)
         if ticket_list:
             ids = []
             for ticket in ticket_list:
@@ -76,7 +76,7 @@ class SceTicket(http.Controller):
             domain.append(('id','not in',ids))
             tickets = Ticket.search(domain)
             for ticket in tickets:
-                if ticket.id != False:
+                if ticket.id:
                     ticket_list.append(
                         {
                             'id': ticket.id,
@@ -91,7 +91,7 @@ class SceTicket(http.Controller):
                     )
         else:
             for ticket in tickets:
-                if ticket.id != False:
+                if ticket.id:
                     ticket_list.append(
                         {
                             'id': ticket.id,
@@ -104,7 +104,6 @@ class SceTicket(http.Controller):
                             'topped': 'off'
                         }
                     )
-        # print(ticket_list)
         if post.get('search_box'):
             # print('-------------- enter search_box --------------')
             if post['search_box']:

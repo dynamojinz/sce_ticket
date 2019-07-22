@@ -3,5 +3,8 @@
         <record model="res.groups" id="ticket_admin">
             <field name="name">Ticket / Administrator</field>
         </record>
+        <record model="res.groups" id="ticket_manager">
+            <field name="name">Ticket / Manager</field>
+        </record>
     </data>
 </odoo>
