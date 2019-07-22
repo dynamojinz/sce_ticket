@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <record model="res.groups" id="ticket_admin">
+            <field name="name">Ticket / Administrator</field>
+        </record>
+    </data>
+</odoo>

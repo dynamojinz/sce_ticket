@@ -1,0 +1,197 @@
+<odoo>
+    <data>
+        <!--render中识别的是module_templateId-->
+        <template id="ticket" name="Ticket">
+            <t t-name="ticket_index">
+            <html>
+            <head>
+                <meta charset="UTF-8"/>
+                <title>Ticket Index</title>
+                <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0" />
+                <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css"> -->
+                <link rel="stylesheet" href="/sce_ticket/static/src/css/weui.min.css" />
+                <link rel="stylesheet" href="/sce_ticket/static/src/css/jquery-weui.min.css" />
+                <link rel="stylesheet" type="text/css" href="/sce_ticket/static/src/css/base.css" />
+                <link rel="stylesheet" type="text/css" href="/sce_ticket/static/src/css/ticket.css" />
+                <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css"> -->
+
+            </head>
+            <body class="layout pad">
+                <!-- 搜索栏 -->
+                <div class="weui-search-bar" id="searchBar">
+                  <form class="weui-search-bar__form" id="search_form">
+                    <div class="weui-search-bar__box">
+                      <i class="weui-icon-search"></i>
+                      <input type="search" name="search_box" class="weui-search-bar__input" id="searchInput" placeholder="请输入公司标题" required="" t-att-value="search" />
+                      <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                    </div>
+                    <label class="weui-search-bar__label" id="searchText">
+                      <i class="weui-icon-search"></i>
+                      <span>请输入公司标题</span>
+                    </label>
+                  </form>
+                  <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+                </div>
+                <!-- 发票选项卡 -->
+                <!--<div t-foreach="dist" t-as="d">-->
+                    <!--<p t-esc="d['topped']"></p>-->
+                    <!--<p t-esc="d['ticket_name']"></p>-->
+                <!--</div>-->
+                <div class="weui-form-preview" t-foreach="ticket_list" t-as="ticket">
+                    <a target="_blank" t-att-href="'/sce_ticket/ticket/detail/%d' % (ticket['id'])">
+                        <div class="weui-cells">
+                          <div class="weui-cell">
+                            <div class="weui-cell__hd"><img src="/sce_ticket/static/src/icons/company.png" /></div>
+                            <div class="weui-cell__bd">
+                              <p t-esc="ticket['name']"></p>
+                            </div>
+                          </div>
+                        </div>
+                    </a>
+                      <div class="weui-form-preview__bd">
+                        <div class="weui-form-preview__item">
+                          <label class="weui-form-preview__label">税号</label>
+                          <span class="weui-form-preview__value" t-esc="ticket['duty_number']"></span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                          <label class="weui-form-preview__label">单位地址</label>
+                          <span class="weui-form-preview__value" t-esc="ticket['address']"></span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                          <label class="weui-form-preview__label">电话号码</label>
+                          <span class="weui-form-preview__value" t-esc="ticket['phone']"></span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                          <label class="weui-form-preview__label">开户银行</label>
+                          <span class="weui-form-preview__value" t-esc="ticket['bank_name']"></span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                          <label class="weui-form-preview__label">银行账户</label>
+                          <span class="weui-form-preview__value" t-esc="ticket['bank_number']"></span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                          <label class="weui-form-preview__label">
+                              置顶
+                          </label>
+                          <div class="weui-cell__ft">
+                              <!--t-att-action="'/sce_ticket/ticket/top/%d' % (ticket.id)"-->
+                              <form name="checkForm" method="get" t-att-action="'/sce_ticket/index'">
+                              <t t-if="ticket['topped']=='off'">
+                                  <input class="weui-switch" type="checkbox" t-att-value="ticket['id']" name="topped"/>
+                              </t>
+                              <t t-if="ticket['topped']=='on'">
+                                  <input class="weui-switch mytrans" type="checkbox" t-att-value="ticket['id']" name="topped" />
+                              </t>
+                                 <!--<input class="weui-switch" type="checkbox" t-att-value="ticket['id']" name="topped" checked="1"/>-->
+                              <!--<input t-if="ticket['topped']=='off'" class="" type="checkbox" t-att-value="ticket['id']" name="topped"/>-->
+                             </form>
+                          </div>
+                        </div>
+                        </div>
+
+                </div>
+                <!-- 开票须知 -->
+                <div class="weui-tab weui-footer_fixed-bottom">
+                  <div class="weui-tabbar">
+                    <a class="weui-tabbar__item" onclick="ww">
+                      <p class="weui-tabbar__label">
+                        <b></b>
+                        开票须知
+                      </p>
+                    </a>
+                  </div>
+                </div>
+                <!--  -->
+                <!--<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>-->
+                <script src="/sce_ticket/static/src/js/jquery-1.11.3.min.js"></script>
+                <script src="/sce_ticket/static/src/js/jquery-weui.min.js"></script>
+                <script src="/sce_ticket/static/src/js/all.js"></script>
+                <script>
+                    $(".weui-tabbar__item")[0].onclick=function(){
+                        // $.alert("自定义的消息内容");
+                        $.alert("是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长是一些注意事项。。。肯能很长", "开票须知");
+                    }
+                    <!--function topConfirm(checkbox){-->
+                        <!--if(checkbox.checked == true){-->
+                            <!--console.log("置顶的第一步");-->
+                            <!--console.log(checkbox.nodeName);-->
+                            <!--return true;-->
+                        <!--}else{-->
+                            <!--console.log("又取消了");-->
+                            <!--return false;-->
+                        <!--}-->
+                    <!--}-->
+                </script>
+            </body>
+            </html>
+            </t>
+        </template>
+        <template id="detail" name="Detail">
+            <html>
+            <head>
+                <meta charset="UTF-8"/>
+                <title>Document</title>
+                <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0"/>
+                <link rel="stylesheet" href="/sce_ticket/static/src/css/weui.min.css" />
+                <link rel="stylesheet" href="/sce_ticket/static/src/css/jquery-weui.min.css" />
+                <link rel="stylesheet" type="text/css" href="/sce_ticket/static/src/css/base.css" />
+                <link rel="stylesheet" type="text/css" href="/sce_ticket/static/src/css/details.css" />
+            </head>
+            <body class="layout">
+                <div class="weui-panel weui-panel_access pad" id="hah">
+                  <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">名称</h4>
+                        <p class="weui-media-box__desc" t-field="ticket.name"></p>
+                      </div>
+                    </div>
+                    <div class="weui-media-box weui-media-box_appmsg">
+                      <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">税号</h4>
+                        <p class="weui-media-box__desc" t-field="ticket.duty_number"></p>
+                      </div>
+                    </div>
+                    <div class="weui-media-box weui-media-box_appmsg">
+                      <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">地址</h4>
+                        <p class="weui-media-box__desc" t-field="ticket.address"></p>
+                      </div>
+                    </div>
+                    <div class="weui-media-box weui-media-box_appmsg">
+                      <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">电话</h4>
+                        <p class="weui-media-box__desc" t-field="ticket.phone"></p>
+                      </div>
+                    </div>
+                    <div class="weui-media-box weui-media-box_appmsg">
+                      <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">开户行</h4>
+                        <p class="weui-media-box__desc" t-field="ticket.bank_name"></p>
+                      </div>
+                    </div>
+                    <div class="weui-media-box weui-media-box_appmsg">
+                      <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">账号</h4>
+                        <p class="weui-media-box__desc" t-field="ticket.bank_number"></p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+                <div class="scan">
+                    <!--<img src="../img/scantest.png"/>-->
+                    <span class="img" itemprop="image"  t-field="ticket.image" t-options="{'widget': 'image', 'zoom': 'image'}"/>
+                    <p>
+                        <b></b>
+                        请展示此二维码
+                    </p>
+                </div>
+
+                <script src="/sce_ticket/static/src/js/jquery-1.11.3.min.js"></script>
+                <script src="/sce_ticket/static/src/js/jquery-weui.min.js"></script>
+                <script src="/sce_ticket/static/src/js/all.js"></script>
+            </body>
+            </html>
+        </template>
+    </data>
+</odoo>

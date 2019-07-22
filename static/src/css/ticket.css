@@ -1,0 +1,110 @@
+.pad{padding-bottom: 30px}
+/*选项卡*/
+.weui-form-preview{
+	width: 95%;
+	margin: 0 auto 10px;
+	border: 1px solid #f0f0f0;
+	border-radius: 10px;
+}
+.weui-form-preview__value{color: #333/*右侧文字颜色*/}
+.weui-cells{margin-top:0em;background: none;}
+.weui-cells::before{content: none;}/*去除分割线*/
+/*添加分割线*/
+.weui-cell::after{
+	content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: #e5e5e5;
+    z-index: 100;
+}
+/*置顶按钮*/
+.weui-switch{width: 38px;height: 22px;right: 4px;top: 2px}
+.weui-switch::before{width:36px;height: 20px}
+.weui-switch::after{width:20px;height: 20px}
+.weui-switch:checked {
+    border-color: #4CA0FB;
+    background-color: #4CA0FB;
+}
+/*搜索栏*/
+.weui-search-bar{background: #f0f0f0;}
+.weui-search-bar__label{padding: 4px 0;}
+.weui-search-bar__box{padding: 4px 30px}
+.weui-search-bar:after{content: none;}
+.weui-search-bar__cancel-btn{color: #4CA0FB}
+.weui-search-bar__label{background: #fff;border-radius: 8px;}
+.weui-search-bar__form:after{border:none;background:#fff;}
+/*开票须知*/
+.weui-tab{height: 0;}
+.weui-footer_fixed-bottom{bottom: 0; margin:auto;max-width: 640px}
+.weui-tabbar__label{line-height: 2em;color: #999;font-size: 14px;}
+.weui-tabbar__label b{
+    display: inline-block;
+    width: 16px;height: 16px;
+    background: url(/sce_ticket/static/src/icons/care.png) no-repeat 0 0;
+    position: relative;top:3px;
+}
+.weui-dialog__btn{color:#4CA0FB}
+
+
+.myswitch{
+    width: 38px;
+    height: 22px;
+    right: 4px;
+    top: 2px;
+    position: relative;
+    border: 1px solid #dfdfdf;
+    outline: 0;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background-color: #dfdfdf;
+    -webkit-transition: background-color .1s,border .1s;
+    transition: background-color .1s,border .1s;
+}
+/*input.my-switch:checked {*/
+    /*border-color: #4CA0FB;*/
+    /*background-color: #4CA0FB;*/
+/*}*/
+.myswitch::before{
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border:1px solid #dfdfdf;
+    width: 36px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: #fdfdfd;
+    -webkit-transition: -webkit-transform .35s cubic-bezier(.45,1,.4,1);
+    transition: -webkit-transform .35s cubic-bezier(.45,1,.4,1);
+    transition: transform .35s cubic-bezier(.45,1,.4,1);
+    transition: transform .35s cubic-bezier(.45,1,.4,1),-webkit-transform .35s cubic-bezier(.45,1,.4,1);
+}
+.myswitch::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    -webkit-transition: -webkit-transform .35s cubic-bezier(.4,.4,.25,1.35);
+    transition: -webkit-transform .35s cubic-bezier(.4,.4,.25,1.35);
+    transition: transform .35s cubic-bezier(.4,.4,.25,1.35);
+    transition: transform .35s cubic-bezier(.4,.4,.25,1.35),-webkit-transform .35s cubic-bezier(.4,.4,.25,1.35);
+}
+/*.my-switch:checked:after {
+    -webkit-transform: translateX(20px);
+    transform: translateX(20px);
+}*/
+.mytrans::after{
+    -webkit-transform: translateX(20px);
+    transform: translateX(20px);
+}
+.mytrans::before{
+        background-color: #4CA0FB;
+}

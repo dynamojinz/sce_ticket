@@ -1,0 +1,11 @@
+<odoo>
+  <data>
+    <!-- Top menu item -->
+    <menuitem name="Ticket" id="sce_ticket.menu_root" groups="sce_ticket.ticket_admin"/>
+    <!-- backend -->
+    <menuitem name="Ticket Management" id="sce_ticket.menu_ticket" parent="sce_ticket.menu_root" sequence="80"
+        action="sce_ticket.action_window_ticket"/>
+    <menuitem name="Ticket Index" id="sce_ticket.menu_ticker_index" parent="sce_ticket.menu_root"
+              action="sce_ticket.action_url_ticket" sequence="90"/>
+  </data>
+</odoo>

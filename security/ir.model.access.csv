@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acc_sce_ticket_ticket,acc_sce_ticket.ticket,model_sce_ticket_ticket,,1,0,0,0
+adm_sce_ticket_ticket,adm_sce_ticket.ticket,model_sce_ticket_ticket,ticket_admin,1,1,1,1
+
+acc_sce_ticket_top,acc_sce_ticket.top,model_sce_ticket_top,,1,0,0,0
+adm_sce_ticket_top,adm_sce_ticket.top,model_sce_ticket_top,ticket_admin,1,1,1,1
+

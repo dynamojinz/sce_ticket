@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="sce_ticket.ticket_list">
+            <field name="name">Ticket.List</field>
+            <field name="model">sce_ticket.ticket</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="duty_number"/>
+                    <field name="address"/>
+                    <field name="phone"/>
+                    <field name="bank_name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sce_ticket.ticket_form">
+            <field name="name">Ticket.Form</field>
+            <field name="model">sce_ticket.ticket</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" clickable="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="duty_number"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="bank_name"/>
+                            <field name="bank_number"/>
+                        </group>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar" options='{"preview_image":"image"}'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--actions-->
+        <record model="ir.actions.act_window" id="sce_ticket.action_window_ticket">
+            <field name="name">Ticket.action.window</field>
+            <field name="res_model">sce_ticket.ticket</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_url" id="sce_ticket.action_url_ticket">
+            <field name="name">Ticket Index</field>
+            <field name="url">/sce_ticket/index</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
