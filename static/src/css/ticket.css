@@ -35,6 +35,7 @@
 .weui-search-bar:after{content: none;}
 .weui-search-bar__cancel-btn{color: #4CA0FB}
 .weui-search-bar__label{background: #fff;border-radius: 8px;}
+.weui-search-bar__form{height:36px}
 .weui-search-bar__form:after{border:none;background:#fff;}
 /*开票须知*/
 .weui-tab{height: 0;}
